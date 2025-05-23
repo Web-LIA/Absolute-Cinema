@@ -1,0 +1,28 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Build
+bin/
+target/
+build/
+
+# Arquivos temporários e de sistema
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Arquivos de dependências (caso use Maven/Gradle, pode ajustar)
+# Para Maven:
+target/
+# Para Gradle:
+.gradle/
+build/
+
+# Arquivos de IDEs diferentes (se alguém usar outra IDE por acidente)
+*.iml
+.idea/
