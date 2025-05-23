@@ -7,6 +7,7 @@
 ![Swing](https://img.shields.io/badge/Swing-GUI-informational?style=for-the-badge)
 
 ---
+![Absolute Cinema](https://i.imgflip.com/9iis6k.jpg)
 
 ## 🧠 Features
 
