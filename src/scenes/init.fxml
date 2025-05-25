@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
+	<children>
+		<ImageView fx:id="chavesImg" fitWidth="300" layoutX="250.0" layoutY="24.0" preserveRatio="true">
+			<image>
+				<Image url="@../assets/chaves.jpeg" />
+			</image>
+		</ImageView>
+		<Button layoutX="339.0" layoutY="386.0" mnemonicParsing="false" onAction="#switchToCinemaScene" text="Ir para o cinema" />
+		<Label layoutX="250.0" layoutY="299.0" text="Capacidade do auditório:" />
+		<Label layoutX="250.0" layoutY="324.0" text="Tempo de exibição do filme: " />
+		<TextField fx:id="inputCapacity" layoutX="400.0" layoutY="295.0" />
+		<TextField fx:id="inputFilmTime" layoutX="417.0" layoutY="320.0" />
+      <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="357.0" prefHeight="15.0" prefWidth="800.0" />
+	</children>
+</AnchorPane>
