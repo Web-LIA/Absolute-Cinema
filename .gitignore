@@ -3,6 +3,9 @@
 .project
 .settings/
 
+# vscode
+.vscode/
+
 # Build
 bin/
 target/
