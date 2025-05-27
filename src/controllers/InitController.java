@@ -57,10 +57,10 @@ public class InitController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/cinema.fxml"));
 			root = loader.load();
 			CinemaController cinemaController = loader.getController();
-			cinemaController.getInitialValues(capacity, filmTime);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
+			cinemaController.getInitialValues(capacity, filmTime, stage);
 			stage.show();
 		} catch (Exception e) {
 			labelError.setText(e.getMessage());

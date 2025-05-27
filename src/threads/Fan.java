@@ -22,7 +22,7 @@ public class Fan extends Thread {
 	}
 
 	public void run() {
-		while (true) {
+		while (cinema.getIsRunning()) {
 			try {
 				Thread.sleep(1000);
 				cinema.initFanAnimation(this.id);

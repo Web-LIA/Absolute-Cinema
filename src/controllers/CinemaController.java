@@ -30,32 +30,40 @@ public class CinemaController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private boolean isRunning;
 
 	private Stage newFanStage;
-	
 
 	@FXML
 	public void initialize() {
-		//iniciar semaforos
+		this.isRunning = true;
 	}
 
-	public void getInitialValues(int capacity, int filmTime) {
+	public void getInitialValues(int capacity, int filmTime, Stage stage) {
 		this.capacity = capacity;
 		this.filmTime = filmTime;
 		labelCapacity.setText("" + capacity);
 		labelFilmTime.setText("" + filmTime);
+		this.stage = stage;
+		this.stage.setOnCloseRequest(event -> {
+			isRunning = false;
+		});
 	}
-	
+
 	public Semaphore getSemaphore() {
 		return this.S;
 	}
-	
+
 	public int getFanId() {
 		return this.fanId.getAndIncrement();
 	}
-	
+
+	public boolean getIsRunning() {
+		return this.isRunning;
+	}
 
 	public void switchToInitScene(ActionEvent event) throws IOException {
+		this.isRunning = false;
 		root = FXMLLoader.load(getClass().getResource("/scenes/init.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -87,9 +95,9 @@ public class CinemaController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void initFanAnimation(int id) {
-		System.out.println("Iniciada animação do fan "+id);
+		System.out.println("Iniciada animação do fan " + id); // teste
 	}
 
 }
