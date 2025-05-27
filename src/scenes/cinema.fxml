@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CinemaController">
@@ -10,9 +11,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9d7e4" height="72.0" layoutX="34.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="73.0" />
 		<Label layoutX="378.0" layoutY="96.0" text="Cinema" />
 		<Button layoutX="349.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToInitScene" text="Voltar ao início" />
-      <Label fx:id="labelFilmTime" layoutX="64.0" layoutY="42.0" prefHeight="15.0" prefWidth="35.0" />
+      <Label fx:id="labelFilmTime" layoutX="64.0" layoutY="73.0" prefHeight="15.0" prefWidth="35.0" />
       <Label layoutX="43.0" layoutY="42.0" text="N:" />
-      <Label fx:id="labelCapacity" layoutX="64.0" layoutY="73.0" prefHeight="15.0" prefWidth="35.0" />
+      <Label fx:id="labelCapacity" layoutX="64.0" layoutY="42.0" prefHeight="15.0" prefWidth="35.0" />
       <Label layoutX="43.0" layoutY="73.0" text="T:" />
+      <Circle fill="#1fff20" layoutX="733.0" layoutY="225.0" onMouseClicked="#openNewFanWindow" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
 	</children>
 </AnchorPane>
