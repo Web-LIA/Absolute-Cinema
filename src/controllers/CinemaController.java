@@ -23,11 +23,6 @@ import javafx.scene.layout.Pane;
 
 public class CinemaController {
 
-	@FXML
-	private Label labelCapacity;
-	@FXML
-	private Label labelFilmTime;
-
 	private int capacity;
 	private int filmTime;
 	private Semaphore S;
@@ -49,8 +44,6 @@ public class CinemaController {
 	public void getInitialValues(int capacity, int filmTime, Stage stage) {
 		this.capacity = capacity;
 		this.filmTime = filmTime;
-		labelCapacity.setText("" + capacity);
-		labelFilmTime.setText("" + filmTime);
 		this.stage = stage;
 		this.stage.setOnCloseRequest(event -> {
 			isRunning = false;
