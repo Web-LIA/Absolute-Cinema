@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="layout" stylesheets="@../themes/init.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="layout" stylesheets="@../themes/init.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
 	<children>
 		
 		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="-79.0" prefHeight="232.0" prefWidth="500.0" styleClass="titulo" text="ABSOLUTE CINEMA" textAlignment="CENTER" textFill="WHITE" />

@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500" styleClass="layout" stylesheets="@../themes/newFan.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewFanController">
+<AnchorPane prefHeight="500.0" prefWidth="500" styleClass="layout" stylesheets="@../themes/newFan.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewFanController">
    <children>
       <Label layoutX="15.0" layoutY="14.0" prefHeight="88.0" prefWidth="471.0" styleClass="titulo" text="Adicione seu Chaves" />
       <Label contentDisplay="CENTER" layoutX="-99.0" layoutY="128.0" prefHeight="45.0" prefWidth="726.0" styleClass="inputLabel" text="Quanto tempo ele passa comendo?   " textAlignment="CENTER" />

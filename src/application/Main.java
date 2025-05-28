@@ -23,6 +23,7 @@ public class Main extends Application {
 			//primaryStage.setWidth(420);
 			//primaryStage.setHeight(420);
 			primaryStage.setResizable(false);
+			
 			//primaryStage.setX(50);
 			//primaryStage.setY(50);
 			//primaryStage.setFullScreen(true);

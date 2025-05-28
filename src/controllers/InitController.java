@@ -62,6 +62,7 @@ public class InitController {
 			cinemaController.getInitialValues(capacity, filmTime);
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
+			stage.setResizable(true);
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {

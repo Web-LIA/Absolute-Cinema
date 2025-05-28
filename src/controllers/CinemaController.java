@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 
@@ -36,14 +38,10 @@ public class CinemaController {
 
 	@FXML
 	public void initialize() {
-		//iniciar semaforos
+		
 	}
-
 	public void getInitialValues(int capacity, int filmTime) {
-		this.capacity = capacity;
-		this.filmTime = filmTime;
-		labelCapacity.setText("" + capacity);
-		labelFilmTime.setText("" + filmTime);
+		
 	}
 	
 	public Semaphore getSemaphore() {
@@ -59,6 +57,7 @@ public class CinemaController {
 		root = FXMLLoader.load(getClass().getResource("/scenes/init.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
 	}
