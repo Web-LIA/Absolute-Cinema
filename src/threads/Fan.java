@@ -1,6 +1,7 @@
 package threads;
 
 import controllers.CinemaController;
+import views.FanView;
 import java.util.concurrent.Semaphore;
 
 public class Fan extends Thread {
@@ -22,12 +23,21 @@ public class Fan extends Thread {
 	}
 
 	public void run() {
+		FanView fan = cinema.createFanView(id);
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 42_000_000; // 42 ms
+
 		while (cinema.getIsRunning()) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				fan.walk();
+			}
+
 			try {
-				Thread.sleep(1000);
-				cinema.initFanAnimation(this.id);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				break;
 			}
 		}
 	}

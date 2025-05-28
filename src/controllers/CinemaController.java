@@ -1,6 +1,9 @@
 package controllers;
 
+import views.FanView;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 
 public class CinemaController {
 
@@ -33,6 +37,7 @@ public class CinemaController {
 	private boolean isRunning;
 
 	private Stage newFanStage;
+	private final List<FanView> fanViews = new ArrayList<>();
 
 	@FXML
 	public void initialize() {
@@ -96,8 +101,14 @@ public class CinemaController {
 		}
 	}
 
-	public void initFanAnimation(int id) {
-		System.out.println("Iniciada animação do fan " + id); // teste
+	public synchronized FanView createFanView(int id) {
+		FanView fan = new FanView(id, (Pane) stage.getScene().getRoot());
+		double baseX = 10;
+		double spacing = 50;
+		int position = fanViews.size();
+		fan.moveTo(baseX + spacing * position, 300);
+		fanViews.add(fan);
+		return fan;
 	}
 
 }
