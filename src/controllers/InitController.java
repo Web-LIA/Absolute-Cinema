@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class InitController {
@@ -32,8 +33,9 @@ public class InitController {
 
 	@FXML
 	public void initialize() {
-		Image img = new Image(getClass().getResourceAsStream("/assets/chaves.jpeg"));
-		chavesImg.setImage(img);
+		//Image img = new Image(getClass().getResourceAsStream("/assets/absoluteExtend.png"));
+		
+		//chavesImg.setImage(img);
 	}
 
 	public void getInputValues() throws Exception {

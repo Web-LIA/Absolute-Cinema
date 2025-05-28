@@ -7,18 +7,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="layout" stylesheets="@../themes/init.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
 	<children>
-		<ImageView fx:id="chavesImg" fitWidth="300" layoutX="250.0" layoutY="24.0" preserveRatio="true">
+		
+		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="-79.0" prefHeight="232.0" prefWidth="500.0" styleClass="titulo" text="ABSOLUTE CINEMA" textAlignment="CENTER" textFill="WHITE" />
+		
+		<Label alignment="CENTER" layoutX="31.0" layoutY="74.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Limite do cinema:" />         
+		<Label layoutX="31.0" layoutY="130.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Duração do filme:" textAlignment="CENTER" />
+		<TextField fx:id="inputCapacity" layoutX="235.0" layoutY="140.0" prefHeight="25.0" prefWidth="235.0" />
+		<TextField fx:id="inputFilmTime" layoutX="235.0" layoutY="84.0" prefHeight="25.0" prefWidth="235.0" />
+      	<Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="175.0" prefHeight="35.0" prefWidth="461.0" styleClass="errorLabel" textFill="WHITE" />
+		<Button layoutX="66.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchToCinemaScene" prefHeight="19.0" prefWidth="368.0" styleClass="button">
+			<graphic>
+      				<Label styleClass="buttonText" text="Iniciar cinema" />
+			</graphic>
+		</Button>
+	  	<ImageView fx:id="chavesImg" fitHeight="200.0" fitWidth="200.0" layoutX="150.0" layoutY="289.0" preserveRatio="false" styleClass="image">
 			<image>
-				<Image url="@../assets/chaves.jpeg" />
+				<Image url="@../assets/absoluteCinema.png" />
 			</image>
 		</ImageView>
-		<Button layoutX="339.0" layoutY="386.0" mnemonicParsing="false" onAction="#switchToCinemaScene" text="Ir para o cinema" />
-		<Label layoutX="250.0" layoutY="299.0" text="Capacidade do auditório:" />
-		<Label layoutX="250.0" layoutY="324.0" text="Tempo de exibição do filme: " />
-		<TextField fx:id="inputCapacity" layoutX="400.0" layoutY="295.0" />
-		<TextField fx:id="inputFilmTime" layoutX="417.0" layoutY="320.0" />
-      <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="357.0" prefHeight="15.0" prefWidth="800.0" />
 	</children>
 </AnchorPane>

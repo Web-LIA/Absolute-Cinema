@@ -10,7 +10,7 @@
 	<children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9d7e4" height="72.0" layoutX="34.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="73.0" />
 		<Label layoutX="378.0" layoutY="96.0" text="Cinema" />
-		<Button layoutX="349.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToInitScene" text="Voltar ao início" />
+		<Button layoutX="64.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchToInitScene" text="Voltar ao início" />
       <Label fx:id="labelFilmTime" layoutX="64.0" layoutY="73.0" prefHeight="15.0" prefWidth="35.0" />
       <Label layoutX="43.0" layoutY="42.0" text="N:" />
       <Label fx:id="labelCapacity" layoutX="64.0" layoutY="42.0" prefHeight="15.0" prefWidth="35.0" />
