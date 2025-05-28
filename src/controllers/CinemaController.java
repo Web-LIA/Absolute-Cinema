@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -72,6 +74,7 @@ public class CinemaController {
 		root = FXMLLoader.load(getClass().getResource("/scenes/init.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -94,6 +97,7 @@ public class CinemaController {
 			newFanStage.setScene(new Scene(root));
 			newFanStage.initModality(Modality.APPLICATION_MODAL); // bloqueia interação com a principal
 			newFanStage.setOnCloseRequest(e -> newFanStage = null); // se o usuário fechar manualmente
+			newFanStage.setResizable(false);
 			newFanStage.show();
 
 		} catch (Exception e) {

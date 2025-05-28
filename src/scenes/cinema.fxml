@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CinemaController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="480.0" minWidth="854.0" prefHeight="480.0" prefWidth="854.0" styleClass="layout" stylesheets="@../themes/cinema.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CinemaController">
 	<children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9d7e4" height="72.0" layoutX="34.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="73.0" />
-		<Label layoutX="378.0" layoutY="96.0" text="Cinema" />
-		<Button layoutX="349.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToInitScene" text="Voltar ao início" />
-      <Label fx:id="labelFilmTime" layoutX="64.0" layoutY="73.0" prefHeight="15.0" prefWidth="35.0" />
-      <Label layoutX="43.0" layoutY="42.0" text="N:" />
-      <Label fx:id="labelCapacity" layoutX="64.0" layoutY="42.0" prefHeight="15.0" prefWidth="35.0" />
-      <Label layoutX="43.0" layoutY="73.0" text="T:" />
-      <Circle fill="#1fff20" layoutX="733.0" layoutY="225.0" onMouseClicked="#openNewFanWindow" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+      <BorderPane layoutX="-1.0" minHeight="480.0" minWidth="854.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefWidth="100.0" style="-fx-background-color: #382020;">
+                     <children>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" style="-fx-background-color: #4d2626;">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d2626" height="30.0" scaleX="2.1" stroke="RED" strokeType="INSIDE" strokeWidth="0.0" translateX="-19.0" width="30.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefWidth="100.0" style="-fx-background-color: #000;">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              
+                              <Pane onMouseClicked="#openNewFanWindow" prefHeight="80.0" prefWidth="80.0" styleClass="addFanButton" VBox.vgrow="NEVER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </right>
+         <top>
+            <TextFlow style="-fx-background-color: #000;" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" style="-fx-background-color: #000;" styleClass="titulo" text="ABSOLUTE CINEMA" textAlignment="CENTER" textFill="WHITE" />
+               </children>
+            </TextFlow>
+         </top>
+         <center>
+            <GridPane prefHeight="749.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextArea editable="false" minHeight="180.0" minWidth="200.0" style="-fx-background-color: #555;" styleClass="console" text="Mensagens do Console:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextArea>
+                  <Pane minHeight="205.0" minWidth="225.0" prefWidth="274.0" styleClass="praca" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Pane prefHeight="282.0" prefWidth="685.0" styleClass="telaCinema" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Pane prefHeight="362.0" prefWidth="569.0" styleClass="plateia" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
 	</children>
 </AnchorPane>
