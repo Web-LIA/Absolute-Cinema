@@ -100,10 +100,13 @@ public class CinemaController {
 
 	public synchronized FanView createFanView(int id) {
 		FanView fan = new FanView(id, (Pane) stage.getScene().getRoot());
-		double baseX = 10;
-		double spacing = 50;
-		int position = fanViews.size();
-		fan.moveTo(baseX + spacing * position, 300);
+		//double baseX = 10;
+		//double spacing = 50;
+		//int position = fanViews.size();
+		//fan.moveTo(baseX + spacing * position, 300);
+		//double x = stage.getScene().getWidth()/2;
+		//System.out.println(""+x);
+		//fan.moveTo(stage.getScene().getWidth()/2,  stage.getScene().getHeight()/2);
 		fanViews.add(fan);
 		return fan;
 	}

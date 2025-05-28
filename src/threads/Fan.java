@@ -25,7 +25,7 @@ public class Fan extends Thread {
 	public void run() {
 		FanView fan = cinema.createFanView(id);
 		long lastUpdate = System.nanoTime();
-		final long frameDuration = 42_000_000; // 42 ms
+		final long frameDuration = 65_000_000; // 42 ms
 
 		while (cinema.getIsRunning()) {
 			long now = System.nanoTime();

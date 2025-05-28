@@ -14,21 +14,21 @@ public class FanView {
 	private final Pane root;
 	private final List<Image> fanFrames = new ArrayList<>();
 	private int walkFrame = 1;
-	private int viewDirection = 1; // 1=up, 2=rigth, 3=down, 4=left
+	private int viewDirection = 3; // 1=up, 2=rigth, 3=down, 4=left
 
 	public FanView(int id, Pane root) {
 		this.id = id;
 		this.root = root;
-		this.x = 10;
-		this.y = 300;
+		this.x = 680;
+		this.y = 60;
 
-		for (int i = 1; i <= 32; i++) {
-			fanFrames.add(new Image("/assets/chaves_frame_" + i + ".png"));
+		for (int i = 1; i <= 68; i++) {
+			fanFrames.add(new Image("/assets/chaves_frames/chaves_frame_" + i + ".png"));
 		}
 
 		imageView = new ImageView(fanFrames.get(0));
-		imageView.setFitWidth(100);
-		imageView.setFitHeight(100);
+		imageView.setFitWidth(50);
+		imageView.setFitHeight(50);
 		imageView.setLayoutX(x);
 		imageView.setLayoutY(y);
 		// testando mudar a animação ao clicar
@@ -44,6 +44,24 @@ public class FanView {
 	}
 
 	public void walk() {
+		switchFrame(walkFrame);
+		int walkFrame0 = (this.viewDirection - 1) * 9 + 33;
+		if (this.walkFrame >= walkFrame0 && this.walkFrame < walkFrame0 + 8)
+			this.walkFrame++;
+		else
+			this.walkFrame = walkFrame0;
+
+		if (viewDirection == 1)
+			moveTo(x, y - 2);
+		if (viewDirection == 2)
+			moveTo(x - 2, y);
+		if (viewDirection == 3)
+			moveTo(x, y + 2);
+		if (viewDirection == 4)
+			moveTo(x + 2, y);
+	}
+	
+	public void run() {
 		switchFrame(walkFrame);
 		int walkFrame0 = (this.viewDirection - 1) * 8 + 1;
 		if (this.walkFrame >= walkFrame0 && this.walkFrame < walkFrame0 + 7)
