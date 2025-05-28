@@ -81,6 +81,7 @@ public class CinemaController {
 			newFanStage.setScene(new Scene(root));
 			newFanStage.initModality(Modality.APPLICATION_MODAL); // bloqueia interação com a principal
 			newFanStage.setOnCloseRequest(e -> newFanStage = null); // se o usuário fechar manualmente
+			newFanStage.setResizable(false);
 			newFanStage.show();
 
 		} catch (Exception e) {

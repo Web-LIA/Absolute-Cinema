@@ -12,10 +12,10 @@
 		
 		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="-79.0" prefHeight="232.0" prefWidth="500.0" styleClass="titulo" text="ABSOLUTE CINEMA" textAlignment="CENTER" textFill="WHITE" />
 		
-		<Label alignment="CENTER" layoutX="31.0" layoutY="74.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Limite do cinema:" />         
-		<Label layoutX="31.0" layoutY="130.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Duração do filme:" textAlignment="CENTER" />
-		<TextField fx:id="inputCapacity" layoutX="235.0" layoutY="140.0" prefHeight="25.0" prefWidth="235.0" />
-		<TextField fx:id="inputFilmTime" layoutX="235.0" layoutY="84.0" prefHeight="25.0" prefWidth="235.0" />
+		<Label alignment="CENTER" layoutX="31.0" layoutY="80.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Limite do cinema:" />         
+		<Label layoutX="31.0" layoutY="135.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Duração do filme:" textAlignment="CENTER" />
+		<TextField fx:id="inputCapacity" layoutX="235.0" layoutY="140.0" prefHeight="25.0" prefWidth="235.0" styleClass = "inputField" promptText="Máximo 13"/>
+		<TextField fx:id="inputFilmTime" layoutX="235.0" layoutY="84.0" prefHeight="25.0" prefWidth="235.0" styleClass = "inputField" promptText="Em segundos"/>
       	<Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="175.0" prefHeight="35.0" prefWidth="461.0" styleClass="errorLabel" textFill="WHITE" />
 		<Button layoutX="66.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchToCinemaScene" prefHeight="19.0" prefWidth="368.0" styleClass="button">
 			<graphic>
