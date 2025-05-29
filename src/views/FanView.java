@@ -292,6 +292,10 @@ public class FanView {
 	public int getId() {
 		return id;
 	}
+	
+	public ImageView getImageView () {
+		return this.imageView;
+	}
 
 	public void remove() {
 		Platform.runLater(() -> root.getChildren().remove(imageView));
