@@ -81,6 +81,12 @@ public class Fila {
         if (posicao >= 0 && posicao < tamanho) {
             fila[posicao][2] = 0; // Libera a cadeira
         }
+        
+    }
+    public void removeFifo(){
+        for(int i = 0; i< this.tamanho -1; i ++){
+            fila[i][2] = fila[i+1][2];
+        }
     }
     public int positionPerson(int id) {
         for (int i = 0; i < tamanho; i++) {
@@ -130,5 +136,8 @@ public class Fila {
         }
         double[] coord = {this.fila[pos][0],this.fila[pos][1],this.fila[pos][2]};
         return coord;
+    }
+    public double getFirstPerson(){
+        return this.fila[0][2];
     }
 }

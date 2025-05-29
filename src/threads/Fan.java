@@ -14,14 +14,28 @@ public class Fan extends Thread {
 	private Semaphore cadeirasSemaphore;
 	private Semaphore poltronasSemaphore;
 	private Semaphore filaForaCinema;
-	public Fan(int eatTime, CinemaController cinemaController, Semaphore cadeiras, Semaphore poltronas,Semaphore filaCinema) {
+	private Semaphore filaCapacidade;
+	private Semaphore filaAndou;
+	private Semaphore entrada ;
+	private Semaphore inicioFilme ;
+	private Semaphore cheios;
+	private Semaphore saida ;
+
+	public Fan(int eatTime, CinemaController cinemaController) {
 		this.id = cinemaController.getFanId();
 		this.S = cinemaController.getSemaphore();
 		this.eatTime = eatTime;
 		this.cinema = cinemaController;
-		this.cadeirasSemaphore = cadeiras;
-		this.poltronasSemaphore = poltronas;
-		this.filaForaCinema = filaCinema;
+		this.cadeirasSemaphore = cinemaController.getCadeiras();
+		this.poltronasSemaphore = cinemaController.getPoltronas();
+		this.filaForaCinema = cinemaController.getFilaForaCinema();
+		this.entrada = cinemaController.getEntrada();
+		this.inicioFilme = cinemaController.getInicioFilme();
+		this.cheios = cinemaController.getCheios();
+		this.saida = cinemaController.getSaida();
+		this.filaCapacidade = cinemaController.getFilaCapacidade();
+		this.filaAndou = cinemaController.getFilaAndou();
+		setDaemon(true);
 	}
 
 	public void eat() {
@@ -154,9 +168,8 @@ public class Fan extends Thread {
 			filaForaCinema.acquire();
 			Fila poltronas = cinema.getFilaCinema();
 			int posicao = poltronas.positionPerson(id);
-			if(posicao != -1) {
-				poltronas.removePerson(posicao);
-				
+			if(posicao == 0) {
+				poltronas.removeFifo();
 			} else {
 				
 			}
@@ -169,19 +182,44 @@ public class Fan extends Thread {
 	
 	public void run() {
 		FanView fan = cinema.createFanView(id);
-		long lastUpdate = System.nanoTime();
-		final long frameDuration = 65_000_000; // 42 ms
-
-		while (cinema.getIsRunning()) {
-			long now = System.nanoTime();
-			if (now - lastUpdate >= frameDuration) {
-				lastUpdate = now;
-				fan.walk();
-			}
+		while (true) {
 			try {
-				Thread.sleep(1);
+				while (cinema.getFilaCinema().getFirstPerson() == this.id) {
+					
+					escolherFilaCinema();
+					if(cinema.getFilaCinema().positionPerson(id) != -1) fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
+					filaAndou.acquire();
+				}
+				//Fã na fila do cinema
+				entrada.acquire();
+				sairFilaForaCinema();
+				filaAndou.release();
+				fan.entryAnimation(true);
+				escolherPoltronaCinema();
+				fan.goToCinemaChairAnimation( cinema.getPoltronasCinema().getPerson(id)[0], cinema.getPoltronasCinema().getPerson(id)[1], true);
+				
+				// Animção Fã entrando no cinema
+				
+
+				// Fã entra no cinema
+				cheios.release();
+
+				//Fã esperando filme
+				inicioFilme.acquire();
+
+				while (cinema.getIsFilmRunning()) { 
+					
+				}
+				
+				// Animação Fã saindo do cinema
+				sairPoltronaCinema();
+				fan.goToRefectoryAnimation(true);
+				saida.release();
+				
+				
+
 			} catch (InterruptedException e) {
-				break;
+				e.printStackTrace();
 			}
 		}
 	}

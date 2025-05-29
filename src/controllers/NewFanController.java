@@ -29,7 +29,7 @@ public class NewFanController {
 				throw new Exception("");
 			}
 
-			Fan fan = new Fan(eatTime, cinemaController,cinemaController.getCadeiras() , cinemaController.getPoltronas(),cinemaController.getFilaForaCinema());
+			Fan fan = new Fan(eatTime, cinemaController);
 			fan.start();
 
 			Stage stage = (Stage) inputEatTime.getScene().getWindow();

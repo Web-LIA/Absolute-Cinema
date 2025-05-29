@@ -44,6 +44,25 @@ public class FanView {
 		Platform.runLater(() -> root.getChildren().add(imageView));
 	}
 
+	public void entryQueueAnimation(double x, double y){
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;	
+				if(this.x> x)
+					walk();
+				else if (this.y < y){
+					this.viewDirection = 3;
+					walk();
+				}else 
+					break;
+			}
+		}
+	}
+
 	public void entryAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
