@@ -4,6 +4,7 @@ import views.FanView;
 import threads.Demonstrator;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import utils.Fila;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,6 +33,10 @@ public class CinemaController {
 	private int capacity;
 	private int filmTime;
 	private Semaphore S;
+	private Semaphore cadeiras = new Semaphore(1, true); // para controlar as escolhas das 
+	private Semaphore poltronas = new Semaphore(1, true); // para controlar as poltronas do cinema
+	private Semaphore filaForaCinema = new Semaphore(1,true);// controlar fila de fora do cinema
+
 	private final AtomicInteger fanId = new AtomicInteger(1);
 
 	private Stage stage;
@@ -40,12 +46,60 @@ public class CinemaController {
 
 	private Stage newFanStage;
 	private final List<FanView> fanViews = new ArrayList<>();
+	
+	private Fila poltronasCinema ; // fila para as poltronas do cinema
+	private Fila cadeirasPraca;
+	private Fila filaCinema;
+
+	private ArrayList<Integer> voidCinema = new ArrayList<>();
+	private ArrayList<Integer> voidPraca = new ArrayList<>();
 
 	@FXML
 	public void initialize() {
 		this.isRunning = true;
 	}
+	private void initPoltronasCinema() {
+		this.poltronasCinema = new Fila(this.capacity);
+		double []poltronasY = {271,300,328,355,382,412};
+		double []poltronasX = {244,273,300,327,356,384,412,439,468,498,525,554,583};
+		int count = 0;
 
+		for(int i = 0; i< poltronasY.length;i++){
+			int menos = 3-i > 0 ? 3-i: 0;
+			for(int j= menos ; j < poltronasX.length - menos; j++){
+				if(count < this.capacity){
+					this.poltronasCinema.addXY(poltronasX[j],poltronasY[i], 1);
+					count++;
+				}
+			}
+		}
+	}
+
+	private void initCadeirasPraca() {
+		this.cadeirasPraca = new Fila(13);
+		double [][] cadeirasXY = {
+			{ 169, 410, 1}, {117,410, 1}, {70,410, 1}, 
+			{ 171, 372, 0}, {120,372, 0}, {71,372, 0}, 
+			{ 172, 330, 1}, {152,330, 1}, {133,330, 1}, {113,330, 1},{94,330, 1},{74,330, 1},{54,330, 1}
+		}; 
+		for (int i = 0; i < this.cadeirasPraca.getTamanho(); i++) {
+			this.cadeirasPraca.addXY(cadeirasXY[i][0], cadeirasXY[i][1] , cadeirasXY[i][2]);  
+		}
+	}
+	private void initFilaCinema(){
+		
+		double cadeirasX = 679;
+		ArrayList<Double> cadeirasY = new ArrayList<>();
+		double init = 415;
+		while (init > 87) { 
+			cadeirasY.add(init);
+			init-= 42;
+		}
+		this.filaCinema = new Fila(cadeirasY.size());
+		for (int i = 0; i < this.filaCinema.getTamanho(); i++) {
+			this.filaCinema.addXY(cadeirasX, cadeirasY.get(i) ,0);  
+		}
+	}
 	public void getInitialValues(int capacity, int filmTime, Stage stage) {
 		this.capacity = capacity;
 		this.filmTime = filmTime;
@@ -53,17 +107,61 @@ public class CinemaController {
 		this.stage.setOnCloseRequest(event -> {
 			isRunning = false;
 		});
+		initPoltronasCinema();
+		initCadeirasPraca();
+		initFilaCinema();
 		new Demonstrator(this.filmTime, this).start();
 	}
-	
+
 	public void setCinemaScreen(String style) {
 		this.cinemaScreen.setStyle(style);
 	}
-
+	
+	public ArrayList<Integer> getVoidCinema() {
+		return this.voidCinema;
+	}
+	public ArrayList<Integer> getVoidPraca() {
+		return this.voidPraca;
+	}
+	public void addVoidCinema(int id) {
+		if (!this.voidCinema.contains(id)) {
+			this.voidCinema.add(id);
+		}
+	}
+	public void addVoidPraca(int id) {
+		if (!this.voidPraca.contains(id)) {
+			this.voidPraca.add(id);
+		}
+	}
+	public void removeVoidCinema(int id) {
+		this.voidCinema.remove(Integer.valueOf(id));
+	}
+	public void removeVoidPraca(int id) {
+		this.voidPraca.remove(Integer.valueOf(id));
+	}
+	
+	public Fila getFilaCinema(){
+		return this.filaCinema;
+	}
+	public Fila getCadeirasPraca() {
+		return this.cadeirasPraca;
+	}
 	public Semaphore getSemaphore() {
 		return this.S;
 	}
 
+	public Fila getPoltronasCinema() {
+		return this.poltronasCinema;
+	}
+	public Semaphore getCadeiras() {
+		return this.cadeiras;
+	}
+	public Semaphore getPoltronas() {
+		return this.poltronas;
+	}
+	public Semaphore getFilaForaCinema(){
+		return this.filaForaCinema;
+	}
 	public int getFanId() {
 		return this.fanId.getAndIncrement();
 	}

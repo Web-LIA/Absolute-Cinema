@@ -82,5 +82,6 @@
             </GridPane>
          </center>
       </BorderPane>
+                        
 	</children>
 </AnchorPane>

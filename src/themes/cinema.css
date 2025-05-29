@@ -21,7 +21,8 @@
 }
 
 .telaCinema{
-    -fx-background-image: url("../assets/chavesMeme.jpeg");
+    -fx-background-color: #4C4343;
+    /*-fx-background-image: url("../assets/chavesMeme.jpeg");*/
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% 100%;
 }
