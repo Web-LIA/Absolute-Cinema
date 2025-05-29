@@ -38,10 +38,17 @@
                   </HBox>
                   <HBox alignment="CENTER" prefWidth="100.0" style="-fx-background-color: #000;">
                      <children>
-                        <VBox alignment="CENTER">
+                        <VBox alignment="BOTTOM_CENTER">
                            <children>
                               
                               <Pane onMouseClicked="#openNewFanWindow" prefHeight="80.0" prefWidth="80.0" styleClass="addFanButton" VBox.vgrow="NEVER" />
+                              <VBox alignment="CENTER" prefHeight="172.0" prefWidth="67.0">
+                                 <children>
+                                    <Label fx:id="labelIdThread" textFill="#e11212" />
+                                    <Label fx:id="labelEatTimeThread" contentDisplay="CENTER" prefHeight="40.0" prefWidth="80.0" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
+                                    <Label fx:id="labelStatusThread" prefHeight="53.0" prefWidth="80.0" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
+                                 </children>
+                              </VBox>
                            </children>
                         </VBox>
                      </children>
