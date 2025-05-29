@@ -177,8 +177,6 @@ public class Fan extends Thread {
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
 				fan.walk();
-				escolherPoltronaCinema();
-				cinema.getPoltronasCinema().showStatus();
 			}
 			try {
 				Thread.sleep(1000);

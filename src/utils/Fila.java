@@ -46,7 +46,7 @@ public class Fila {
                 fila[i][0] = x;
                 fila[i][1] = y;
                 fila[i][2] = 0; // id da pessoa na fila
-                fila[i][3] = 0;
+                fila[i][3] = direcao;
                 break;
             }
         }
@@ -121,5 +121,14 @@ public class Fila {
         for (int i = 0; i < tamanho; i++) {
             System.out.println("Posição: " + i + " | X: " + fila[i][0] + " | Y: " + fila[i][1] + " | ID: " + fila[i][2] + " | Direção: " + fila[i][3]);
         }
+    }
+    public double[] getPerson(int id){
+        int pos =this.positionPerson(id);
+        if(pos == -1){
+            double[] error = {-1,-1,-1};
+            return error;
+        }
+        double[] coord = {this.fila[pos][0],this.fila[pos][1],this.fila[pos][2]};
+        return coord;
     }
 }

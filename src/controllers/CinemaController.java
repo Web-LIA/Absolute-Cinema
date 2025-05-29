@@ -68,29 +68,31 @@ public class CinemaController {
 				}
 			}
 		}
-		poltronasCinema.showStatus();
 	}
 
 	private void initCadeirasPraca() {
 		this.cadeirasPraca = new Fila(13);
 		double [][] cadeirasXY = {
-			{ 100, 100, 0 }, {200,200, 0}, {300,300, 0}, {400,400, 0},
-			{500,500, 0}, {600,600, 0}, {700,700, 0}, {800,800, 0},
-			{900,900, 0}, {1000,1000, 0},{800,800, 0},{800,800, 0},{800,800, 0}
+			{ 169, 410, 1}, {117,410, 1}, {70,410, 1}, 
+			{ 171, 372, 0}, {120,372, 0}, {71,372, 0}, 
+			{ 172, 330, 1}, {152,330, 1}, {133,330, 1}, {113,330, 1},{94,330, 1},{74,330, 1},{54,330, 1}
 		}; 
 		for (int i = 0; i < this.cadeirasPraca.getTamanho(); i++) {
 			this.cadeirasPraca.addXY(cadeirasXY[i][0], cadeirasXY[i][1] , cadeirasXY[i][2]);  
 		}
 	}
 	private void initFilaCinema(){
-		this.filaCinema = new Fila(15);
-		double [][] cadeirasXY = {
-			{ 100, 100 }, {200,200}, {300,300}, {400,400},
-			{500,500}, {600,600}, {700,700}, {800,800},
-			{900,900}, {1000,1000}, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }
-		}; 
+		
+		double cadeirasX = 679;
+		ArrayList<Double> cadeirasY = new ArrayList<>();
+		double init = 415;
+		while (init > 87) { 
+			cadeirasY.add(init);
+			init-= 42;
+		}
+		this.filaCinema = new Fila(cadeirasY.size());
 		for (int i = 0; i < this.filaCinema.getTamanho(); i++) {
-			this.filaCinema.addXY(cadeirasXY[i][0], cadeirasXY[i][1] ,0);  
+			this.filaCinema.addXY(cadeirasX, cadeirasY.get(i) ,0);  
 		}
 	}
 	public void getInitialValues(int capacity, int filmTime, Stage stage) {
