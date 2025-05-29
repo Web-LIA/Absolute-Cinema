@@ -55,13 +55,20 @@ public class CinemaController {
 	}
 	private void initPoltronasCinema() {
 		this.poltronasCinema = new Fila(this.capacity);
-		double [][] poltronasXY = {
-			{ 300, 300 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 },
-			{ 0, 1 }, { 1, 1 }, { 2, 1 }, { 3, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }
-		}; 
-		for (int i = 0; i < this.capacity; i++) {
-			this.poltronasCinema.addXY(poltronasXY[i][0], poltronasXY[i][1], 1);
+		double []poltronasY = {271,300,328,355,382,412};
+		double []poltronasX = {244,273,300,327,356,384,412,439,468,498,525,554,583};
+		int count = 0;
+
+		for(int i = 0; i< poltronasY.length;i++){
+			int menos = 3-i > 0 ? 3-i: 0;
+			for(int j= menos ; j < poltronasX.length - menos; j++){
+				if(count < this.capacity){
+					this.poltronasCinema.addXY(poltronasX[j],poltronasY[i], 1);
+					count++;
+				}
+			}
 		}
+		poltronasCinema.showStatus();
 	}
 
 	private void initCadeirasPraca() {

@@ -45,7 +45,7 @@ public class InitController {
 		} catch (Exception e) {
 			throw new Exception("Digite números inteiros");
 		}
-		if (capacity < 1 || capacity > 10) {
+		if (capacity < 1 || capacity > 66) {
 			throw new Exception("Capacidade do autório inválida");
 		}
 		if (filmTime < 1 || filmTime > 120) {

@@ -11,7 +11,7 @@ public class Fila {
             fila[i][0] = 0; // Inicializa x
             fila[i][1] = 0; // Inicializa y
             fila[i][2] = 0; // Inicializa id da pessoa na fila
-            fila[i][3] = 0; // Inicializa direcao da pessoa 0 frente, 1 costas, 2 esquerda, 3 direita
+            fila[i][3] = 0; // Inicializa direcao da pessoa  
         }
     }
     public double[][] getFila() {
