@@ -1,6 +1,8 @@
 package controllers;
 
 import views.FanView;
+import threads.Demonstrator;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,9 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 public class CinemaController {
+	
+	@FXML
+	private Pane cinemaScreen;
 
 	private int capacity;
 	private int filmTime;
@@ -48,6 +53,11 @@ public class CinemaController {
 		this.stage.setOnCloseRequest(event -> {
 			isRunning = false;
 		});
+		new Demonstrator(this.filmTime, this).start();
+	}
+	
+	public void setCinemaScreen(String style) {
+		this.cinemaScreen.setStyle(style);
 	}
 
 	public Semaphore getSemaphore() {

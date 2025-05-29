@@ -76,7 +76,7 @@
                      </font>
                   </TextArea>
                   <Pane minHeight="205.0" minWidth="225.0" prefWidth="274.0" styleClass="praca" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-                  <Pane prefHeight="282.0" prefWidth="685.0" styleClass="telaCinema" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Pane fx:id="cinemaScreen" prefHeight="282.0" prefWidth="685.0" styleClass="telaCinema" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                   <Pane prefHeight="362.0" prefWidth="569.0" styleClass="plateia" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
