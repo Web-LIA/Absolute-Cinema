@@ -2,6 +2,7 @@ package controllers;
 
 import views.FanView;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import utils.Fila;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,6 +28,10 @@ public class CinemaController {
 	private int capacity;
 	private int filmTime;
 	private Semaphore S;
+	private Semaphore cadeiras = new Semaphore(1, true); // para controlar as escolhas das 
+	private Semaphore poltronas = new Semaphore(1, true); // para controlar as poltronas do cinema
+	private Semaphore filaForaCinema = new Semaphore(1,true);// controlar fila de fora do cinema
+
 	private final AtomicInteger fanId = new AtomicInteger(1);
 
 	private Stage stage;
@@ -35,12 +41,51 @@ public class CinemaController {
 
 	private Stage newFanStage;
 	private final List<FanView> fanViews = new ArrayList<>();
+	
+	private Fila poltronasCinema ; // fila para as poltronas do cinema
+	private Fila cadeirasPraca;
+	private Fila filaCinema;
+
+	private ArrayList<Integer> voidCinema = new ArrayList<>();
+	private ArrayList<Integer> voidPraca = new ArrayList<>();
 
 	@FXML
 	public void initialize() {
 		this.isRunning = true;
 	}
+	private void initPoltronasCinema() {
+		this.poltronasCinema = new Fila(this.capacity);
+		double [][] poltronasXY = {
+			{ 300, 300 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 },
+			{ 0, 1 }, { 1, 1 }, { 2, 1 }, { 3, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }
+		}; 
+		for (int i = 0; i < this.capacity; i++) {
+			this.poltronasCinema.addXY(poltronasXY[i][0], poltronasXY[i][1], 1);
+		}
+	}
 
+	private void initCadeirasPraca() {
+		this.cadeirasPraca = new Fila(13);
+		double [][] cadeirasXY = {
+			{ 100, 100, 0 }, {200,200, 0}, {300,300, 0}, {400,400, 0},
+			{500,500, 0}, {600,600, 0}, {700,700, 0}, {800,800, 0},
+			{900,900, 0}, {1000,1000, 0},{800,800, 0},{800,800, 0},{800,800, 0}
+		}; 
+		for (int i = 0; i < this.cadeirasPraca.getTamanho(); i++) {
+			this.cadeirasPraca.addXY(cadeirasXY[i][0], cadeirasXY[i][1] , cadeirasXY[i][2]);  
+		}
+	}
+	private void initFilaCinema(){
+		this.filaCinema = new Fila(15);
+		double [][] cadeirasXY = {
+			{ 100, 100 }, {200,200}, {300,300}, {400,400},
+			{500,500}, {600,600}, {700,700}, {800,800},
+			{900,900}, {1000,1000}, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }, { 4, 1 }
+		}; 
+		for (int i = 0; i < this.filaCinema.getTamanho(); i++) {
+			this.filaCinema.addXY(cadeirasXY[i][0], cadeirasXY[i][1] ,0);  
+		}
+	}
 	public void getInitialValues(int capacity, int filmTime, Stage stage) {
 		this.capacity = capacity;
 		this.filmTime = filmTime;
@@ -48,12 +93,56 @@ public class CinemaController {
 		this.stage.setOnCloseRequest(event -> {
 			isRunning = false;
 		});
+		initPoltronasCinema();
+		initCadeirasPraca();
+		initFilaCinema();
 	}
-
+	
+	public ArrayList<Integer> getVoidCinema() {
+		return this.voidCinema;
+	}
+	public ArrayList<Integer> getVoidPraca() {
+		return this.voidPraca;
+	}
+	public void addVoidCinema(int id) {
+		if (!this.voidCinema.contains(id)) {
+			this.voidCinema.add(id);
+		}
+	}
+	public void addVoidPraca(int id) {
+		if (!this.voidPraca.contains(id)) {
+			this.voidPraca.add(id);
+		}
+	}
+	public void removeVoidCinema(int id) {
+		this.voidCinema.remove(Integer.valueOf(id));
+	}
+	public void removeVoidPraca(int id) {
+		this.voidPraca.remove(Integer.valueOf(id));
+	}
+	
+	public Fila getFilaCinema(){
+		return this.filaCinema;
+	}
+	public Fila getCadeirasPraca() {
+		return this.cadeirasPraca;
+	}
 	public Semaphore getSemaphore() {
 		return this.S;
 	}
 
+	public Fila getPoltronasCinema() {
+		return this.poltronasCinema;
+	}
+	public Semaphore getCadeiras() {
+		return this.cadeiras;
+	}
+	public Semaphore getPoltronas() {
+		return this.poltronas;
+	}
+	public Semaphore getFilaForaCinema(){
+		return this.filaForaCinema;
+	}
 	public int getFanId() {
 		return this.fanId.getAndIncrement();
 	}

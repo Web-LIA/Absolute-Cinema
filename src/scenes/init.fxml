@@ -22,9 +22,9 @@
       				<Label styleClass="buttonText" text="Iniciar cinema" />
 			</graphic>
 		</Button>
-	  	<ImageView fx:id="chavesImg" fitHeight="200.0" fitWidth="200.0" layoutX="150.0" layoutY="289.0" preserveRatio="false" styleClass="image">
+	  	<ImageView fx:id="chavesImg" fitHeight="200.0" fitWidth="400.0" layoutX="50.0" layoutY="289.0" preserveRatio="false" styleClass="image">
 			<image>
-				<Image url="@../assets/absoluteCinema.png" />
+				<Image url="@../assets/absoluteLaion.jpeg" />
 			</image>
 		</ImageView>
 	</children>
