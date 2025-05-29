@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import utils.Fila;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,6 +38,9 @@ public class CinemaController {
 	private Label labelEatTimeThread;
 	@FXML
 	private Label labelStatusThread;
+
+	@FXML
+	private TextArea consoleText;
 
 	private int capacity;
 	private int filmTime;
@@ -133,6 +137,9 @@ public class CinemaController {
 
 	public void setCinemaScreen(String style) {
 		this.cinemaScreen.setStyle(style);
+	}
+	public void addConsoleText(String text) {
+		this.consoleText.setText(consoleText.getText() + text + "\n");
 	}
 	
 	public ArrayList<Integer> getVoidCinema() {
