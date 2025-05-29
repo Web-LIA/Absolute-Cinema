@@ -2,6 +2,7 @@ package controllers;
 
 import views.FanView;
 import threads.Demonstrator;
+import threads.Fan;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -29,6 +30,12 @@ public class CinemaController {
 	
 	@FXML
 	private Pane cinemaScreen;
+	@FXML
+	private Label labelIdThread;
+	@FXML
+	private Label labelEatTimeThread;
+	@FXML
+	private Label labelStatusThread;
 
 	private int capacity;
 	private int filmTime;
@@ -205,9 +212,28 @@ public class CinemaController {
 			e.printStackTrace();
 		}
 	}
+	
+	public void setSelectedFanLabels(String id, String eatTime, String status) {
+		this.labelIdThread.setText("Id: " + id);
+		this.labelEatTimeThread.setText("Tempo de lanche: " + eatTime);
+		this.labelStatusThread.setText("Status: " + status);
+	}
+	
+	public void clearSelectedFanLabels() {
+		this.labelIdThread.setText("");
+		this.labelEatTimeThread.setText("");
+		this.labelStatusThread.setText("");
+	}
 
-	public synchronized FanView createFanView(int id) {
+	public synchronized FanView createFanView(int id, int eatTime, Fan fanThread) {
 		FanView fan = new FanView(id, (Pane) stage.getScene().getRoot());
+		fan.getImageView().setOnMouseEntered(e -> {
+			fanThread.getState();
+			this.setSelectedFanLabels(id+"", eatTime+"", fanThread.getState().toString());
+		});
+		fan.getImageView().setOnMouseExited(e -> {
+			this.clearSelectedFanLabels();
+		});
 		//double baseX = 10;
 		//double spacing = 50;
 		//int position = fanViews.size();
