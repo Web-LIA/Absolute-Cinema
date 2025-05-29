@@ -107,6 +107,7 @@ public class Fan extends Thread {
 				
 				return;
 			}
+			cinema.removeVoidPraca(id);
 			cadeiras.addPerson(posicao,id);
 			
 			//Thread.sleep(100); // Simula o tempo de escolha da cadeira
@@ -155,8 +156,9 @@ public class Fan extends Thread {
 			if(posicao < 0 ) {
 				return;
 			}
+			cinema.removeVoidCinema(id);
 			poltronas.addPerson(posicao,id);
-			//Thread.sleep(100); // Simula o tempo de escolha da cadeira
+			//Thread.sleep(100); // 
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt(); // Restaura o estado de interrupção
 		} finally {
@@ -184,17 +186,26 @@ public class Fan extends Thread {
 		FanView fan = cinema.createFanView(id);
 		while (true) {
 			try {
-				while (cinema.getFilaCinema().getFirstPerson() == this.id) {
+				
+
+				while(true){
 					
 					escolherFilaCinema();
-					if(cinema.getFilaCinema().positionPerson(id) != -1) fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
+					
+					
+					if(cinema.getFilaCinema().positionPerson(id) != -1){
+						fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
+					}
+					
+					if(cinema.getFilaCinema().positionPerson(id) == 0)break;
 					filaAndou.acquire();
 				}
 				//Fã na fila do cinema
+				fan.entryAnimation(true);
 				entrada.acquire();
 				sairFilaForaCinema();
-				filaAndou.release();
-				fan.entryAnimation(true);
+				filaAndou.release(cinema.getFilaCinema().getTamanho() + cinema.getVoidCinema().size());
+				
 				escolherPoltronaCinema();
 				fan.goToCinemaChairAnimation( cinema.getPoltronasCinema().getPerson(id)[0], cinema.getPoltronasCinema().getPerson(id)[1], true);
 				
@@ -207,16 +218,26 @@ public class Fan extends Thread {
 				//Fã esperando filme
 				inicioFilme.acquire();
 
-				while (cinema.getIsFilmRunning()) { 
-					
-				}
-				
+				fan.watchFilmAnimation(cinema.getIsFilmRunningObject());
 				// Animação Fã saindo do cinema
 				sairPoltronaCinema();
 				fan.goToRefectoryAnimation(true);
 				saida.release();
+				escolherCadeiraPraca();
+				if(cinema.getCadeirasPraca().positionPerson(id) != -1){
+					fan.goToRefectoryChairAnimation(cinema.getCadeirasPraca().getPerson(id)[0], cinema.getCadeirasPraca().getPerson(id)[1], cinema.getCadeirasPraca().getPerson(id)[2]==1 , true);
+					Thread.sleep(1000 * eatTime);
+					sairCadeiraPraca();
+					fan.goFromRefectoryToExitAnimation(true);
+				}else {
+					fan.goOutToEatAnimation(true);
+					Thread.sleep(1000 * eatTime);
+					cinema.removeVoidPraca(id);
+					fan.goFromOutToExitAnimation(true);
+				}
 				
-				
+				fan.remove();
+				break;
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();

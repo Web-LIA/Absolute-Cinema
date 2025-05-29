@@ -134,7 +134,7 @@ public class Fila {
             double[] error = {-1,-1,-1};
             return error;
         }
-        double[] coord = {this.fila[pos][0],this.fila[pos][1],this.fila[pos][2]};
+        double[] coord = {this.fila[pos][0],this.fila[pos][1],this.fila[pos][3]};
         return coord;
     }
     public double getFirstPerson(){

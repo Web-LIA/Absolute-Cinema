@@ -37,8 +37,8 @@ public class CinemaController {
 	private Semaphore cadeiras = new Semaphore(1, true); // para controlar as escolhas das 
 	private Semaphore poltronas = new Semaphore(1, true); // para controlar as poltronas do cinema
 	private Semaphore filaForaCinema = new Semaphore(1,true);// controlar fila de fora do cinema
-	private Semaphore filaCapacidade;
-	private Semaphore filaAndou = new Semaphore(1,true);
+	private Semaphore filaCapacidade = new Semaphore (1,true);
+	private Semaphore filaAndou = new Semaphore(0,true);
 
 	private Semaphore entrada = new Semaphore(0, true);
 	private Semaphore inicioFilme = new Semaphore(0);
@@ -109,7 +109,7 @@ public class CinemaController {
 		for (int i = 0; i < this.filaCinema.getTamanho(); i++) {
 			this.filaCinema.addXY(cadeirasX, cadeirasY.get(i) ,0);  
 		}
-		this.filaCapacidade = new Semaphore(filaCinema.getTamanho(),true);
+		
 	}
 	public void getInitialValues(int capacity, int filmTime, Stage stage) {
 		this.capacity = capacity;
@@ -145,10 +145,12 @@ public class CinemaController {
 		}
 	}
 	public void removeVoidCinema(int id) {
-		this.voidCinema.remove(Integer.valueOf(id));
+		if(this.voidCinema.contains(id))
+			this.voidCinema.remove(Integer.valueOf(id));
 	}
 	public void removeVoidPraca(int id) {
-		this.voidPraca.remove(Integer.valueOf(id));
+		if(this.voidPraca.contains(id))
+			this.voidPraca.remove(Integer.valueOf(id));
 	}
 	
 	public Fila getFilaCinema(){
@@ -196,6 +198,9 @@ public class CinemaController {
 	}
 	public boolean getIsFilmRunning(){
 		return this.isFilmRunning.get();
+	}
+	public AtomicBoolean getIsFilmRunningObject(){
+		return this.isFilmRunning;
 	}
 	public void setIsFilmRunning(boolean set){
 		this.isFilmRunning.set(set);

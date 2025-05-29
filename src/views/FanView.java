@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 
@@ -26,7 +27,7 @@ public class FanView {
 			fanFrames.add(new Image("/assets/chaves_frames/chaves_frame_" + i + ".png"));
 		}
 
-		imageView = new ImageView(fanFrames.get(0));
+		imageView = new ImageView(fanFrames.get(51));
 		imageView.setFitWidth(50);
 		imageView.setFitHeight(50);
 		imageView.setLayoutX(x);
@@ -109,10 +110,10 @@ public class FanView {
 		}
 	}
 
-	public void watchFilmAnimation(boolean isFilmRunning) {
+	public void watchFilmAnimation(AtomicBoolean isFilmRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 100_000_000; // 42 ms
-		while (isFilmRunning) {
+		while (isFilmRunning.get()) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
