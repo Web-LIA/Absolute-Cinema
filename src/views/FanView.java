@@ -22,7 +22,7 @@ public class FanView {
 		this.x = 680;
 		this.y = 60;
 
-		for (int i = 1; i <= 68; i++) {
+		for (int i = 1; i <= 80; i++) {
 			fanFrames.add(new Image("/assets/chaves_frames/chaves_frame_" + i + ".png"));
 		}
 
@@ -33,14 +33,166 @@ public class FanView {
 		imageView.setLayoutY(y);
 		// testando mudar a animação ao clicar
 		imageView.setOnMouseClicked(e -> {
-			if (this.viewDirection == 4)
-				this.changeDirection(1);
-			else
-				this.changeDirection(this.viewDirection + 1);
+			// if (this.viewDirection == 4)
+			// this.changeDirection(1);
+			// else
+			// this.changeDirection(this.viewDirection + 1);
+			System.out.println("X: " + this.x + "Y: " + this.y);
 		});
 
 		// root.getChildren().add(imageView);
 		Platform.runLater(() -> root.getChildren().add(imageView));
+	}
+
+	public void entryAnimation() {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 3;
+				if (this.y < 415)
+					walk();
+				else if (this.x > 640) {
+					this.viewDirection = 2;
+					walk();
+				} else
+					break;
+			}
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				break;
+			}
+		}
+	}
+
+	public void goToCinemaChairAnimation(double chairX, double chairY) {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;
+				if (this.x > chairX)
+					walk();
+				else if (this.y > chairY) {
+					this.viewDirection = 1;
+					walk();
+				} else {
+					this.switchFrame(69);
+					break;
+				}
+			}
+		}
+	}
+
+	public void goToRefectoryAnimation() {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;
+				if (this.x > 222)
+					walk();
+				else if (this.y < 415) {
+					this.viewDirection = 3;
+					walk();
+				} else {
+					this.viewDirection = 2;
+					walk();
+					walk();
+					break;
+				}
+			}
+		}
+	}
+
+	public void goToRefectoryChairAnimation(double chairX, double chairY, boolean backwards) {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;
+				if (this.x > 194)
+					walk();
+				else if (this.y > chairY) {
+					this.viewDirection = 1;
+					walk();
+				} else if (this.x > chairX) {
+					this.viewDirection = 2;
+					walk();
+				} else {
+					if (backwards)
+						this.switchFrame(71);
+					else
+						this.switchFrame(77);
+					break;
+				}
+			}
+		}
+	}
+
+	public void goOutToEatAnimation() {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;
+				if (this.x > 46)
+					walk();
+				else if (this.y < 474) {
+					this.viewDirection = 3;
+					walk();
+				} else
+					break;
+			}
+		}
+	}
+
+	public void goFromRefectoryToExitAnimation() {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 2;
+				if (this.x > 26)
+					walk();
+				else if (this.y > 250) {
+					this.viewDirection = 1;
+					walk();
+				} else
+					break;
+			}
+		}
+	}
+
+	public void goFromOutToExitAnimation() {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 65_000_000; // 42 ms
+		while (true) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				this.viewDirection = 1;
+				if (this.y < 326)
+					walk();
+				else {
+					this.goFromRefectoryToExitAnimation();
+					break;
+				}
+			}
+		}
 	}
 
 	public void walk() {
@@ -60,7 +212,7 @@ public class FanView {
 		if (viewDirection == 4)
 			moveTo(x + 2, y);
 	}
-	
+
 	public void run() {
 		switchFrame(walkFrame);
 		int walkFrame0 = (this.viewDirection - 1) * 8 + 1;
