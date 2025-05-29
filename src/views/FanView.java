@@ -44,10 +44,10 @@ public class FanView {
 		Platform.runLater(() -> root.getChildren().add(imageView));
 	}
 
-	public void entryAnimation() {
+	public void entryAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -68,10 +68,10 @@ public class FanView {
 		}
 	}
 
-	public void goToCinemaChairAnimation(double chairX, double chairY) {
+	public void goToCinemaChairAnimation(double chairX, double chairY, boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -89,10 +89,10 @@ public class FanView {
 		}
 	}
 
-	public void goToRefectoryAnimation() {
+	public void goToRefectoryAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -112,10 +112,10 @@ public class FanView {
 		}
 	}
 
-	public void goToRefectoryChairAnimation(double chairX, double chairY, boolean backwards) {
+	public void goToRefectoryChairAnimation(double chairX, double chairY, boolean backwards, boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -139,10 +139,10 @@ public class FanView {
 		}
 	}
 
-	public void goOutToEatAnimation() {
+	public void goOutToEatAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -158,10 +158,10 @@ public class FanView {
 		}
 	}
 
-	public void goFromRefectoryToExitAnimation() {
+	public void goFromRefectoryToExitAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -177,10 +177,10 @@ public class FanView {
 		}
 	}
 
-	public void goFromOutToExitAnimation() {
+	public void goFromOutToExitAnimation(boolean isRunning) {
 		long lastUpdate = System.nanoTime();
 		final long frameDuration = 65_000_000; // 42 ms
-		while (true) {
+		while (isRunning) {
 			long now = System.nanoTime();
 			if (now - lastUpdate >= frameDuration) {
 				lastUpdate = now;
@@ -188,7 +188,7 @@ public class FanView {
 				if (this.y < 326)
 					walk();
 				else {
-					this.goFromRefectoryToExitAnimation();
+					this.goFromRefectoryToExitAnimation(isRunning);
 					break;
 				}
 			}
