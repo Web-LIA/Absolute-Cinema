@@ -301,4 +301,10 @@ public class FanView {
 	public void remove() {
 		Platform.runLater(() -> root.getChildren().remove(imageView));
 	}
+	public void invisible(){
+		imageView.setOpacity(0);
+	}
+	public void show(){
+		imageView.setOpacity(100);
+	}
 }

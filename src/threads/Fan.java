@@ -183,23 +183,23 @@ public class Fan extends Thread {
 	}
 	
 	public void run() {
-		FanView fan = cinema.createFanView(id);
+		FanView fan = cinema.createFanView(id,eatTime,this);
 		while (true) {
 			try {
-				
-
+				fan.invisible();
+				fan.moveTo(680, 60);
 				while(true){
 					
 					escolherFilaCinema();
-					
-					
 					if(cinema.getFilaCinema().positionPerson(id) != -1){
+						fan.show();
 						fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
 					}
-					
 					if(cinema.getFilaCinema().positionPerson(id) == 0)break;
+					cinema.addConsoleText("Fan" + id + " esperando na fila");
 					filaAndou.acquire();
 				}
+				
 				//Fã na fila do cinema
 				fan.entryAnimation(true);
 				entrada.acquire();
@@ -207,6 +207,7 @@ public class Fan extends Thread {
 				filaAndou.release(cinema.getFilaCinema().getTamanho() + cinema.getVoidCinema().size());
 				
 				escolherPoltronaCinema();
+				cinema.addConsoleText("Fan" + id + "entrou no cinema");
 				fan.goToCinemaChairAnimation( cinema.getPoltronasCinema().getPerson(id)[0], cinema.getPoltronasCinema().getPerson(id)[1], true);
 				
 				// Animção Fã entrando no cinema
@@ -224,6 +225,7 @@ public class Fan extends Thread {
 				fan.goToRefectoryAnimation(true);
 				saida.release();
 				escolherCadeiraPraca();
+				cinema.addConsoleText("Fan " + id + " entrou na praca de alimentacao");
 				if(cinema.getCadeirasPraca().positionPerson(id) != -1){
 					fan.goToRefectoryChairAnimation(cinema.getCadeirasPraca().getPerson(id)[0], cinema.getCadeirasPraca().getPerson(id)[1], cinema.getCadeirasPraca().getPerson(id)[2]==1 , true);
 					Thread.sleep(1000 * eatTime);
@@ -236,8 +238,6 @@ public class Fan extends Thread {
 					fan.goFromOutToExitAnimation(true);
 				}
 				
-				fan.remove();
-				break;
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();

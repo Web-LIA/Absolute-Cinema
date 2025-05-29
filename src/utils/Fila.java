@@ -87,6 +87,7 @@ public class Fila {
         for(int i = 0; i< this.tamanho -1; i ++){
             fila[i][2] = fila[i+1][2];
         }
+        this.fila[this.tamanho -1][2] = 0;
     }
     public int positionPerson(int id) {
         for (int i = 0; i < tamanho; i++) {

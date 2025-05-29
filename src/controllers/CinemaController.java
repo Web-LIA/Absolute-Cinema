@@ -12,6 +12,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +51,7 @@ public class CinemaController {
 	private Semaphore filaForaCinema = new Semaphore(1,true);// controlar fila de fora do cinema
 	private Semaphore filaCapacidade = new Semaphore (1,true);
 	private Semaphore filaAndou = new Semaphore(0,true);
+	//private Semaphore consoleSemaphore = new Semaphore(1,true);
 
 	private Semaphore entrada = new Semaphore(0, true);
 	private Semaphore inicioFilme = new Semaphore(0);
@@ -139,7 +141,11 @@ public class CinemaController {
 		this.cinemaScreen.setStyle(style);
 	}
 	public void addConsoleText(String text) {
-		this.consoleText.setText(consoleText.getText() + text + "\n");
+		Platform.runLater(() -> {
+			this.consoleText.setText(consoleText.getText() + text + "\n");
+		});
+		
+		
 	}
 	
 	public ArrayList<Integer> getVoidCinema() {

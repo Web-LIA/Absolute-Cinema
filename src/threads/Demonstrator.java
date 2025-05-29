@@ -74,10 +74,10 @@ public class Demonstrator extends Thread {
                 // Libera início do filme para todos
 				cinema.setIsFilmRunning(true);
                 inicioFilme.release(capacidade);
-
+				cinema.addConsoleText("Demonstrador iniciou o filme");
                 // Exibe o filme
                 showFilm();
-				
+				cinema.addConsoleText("Demonstrador encerrou o filme");
 				cinema.setIsFilmRunning(false);
                 // Libera fim do filme para todos
                 saida.acquire(capacidade);
