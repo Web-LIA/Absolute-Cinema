@@ -22,7 +22,7 @@ public class FanView {
 		this.x = 680;
 		this.y = 60;
 
-		for (int i = 1; i <= 80; i++) {
+		for (int i = 1; i <= 92; i++) {
 			fanFrames.add(new Image("/assets/chaves_frames/chaves_frame_" + i + ".png"));
 		}
 
@@ -102,8 +102,28 @@ public class FanView {
 					walk();
 				} else {
 					this.switchFrame(69);
+					this.walkFrame = 69;
 					break;
 				}
+			}
+		}
+	}
+
+	public void watchFilmAnimation(boolean isFilmRunning) {
+		long lastUpdate = System.nanoTime();
+		final long frameDuration = 100_000_000; // 42 ms
+		while (isFilmRunning) {
+			long now = System.nanoTime();
+			if (now - lastUpdate >= frameDuration) {
+				lastUpdate = now;
+				switchFrame(walkFrame);
+				int walkFrame0 = 81;
+				if (this.walkFrame >= walkFrame0 && this.walkFrame < walkFrame0 + 2)
+					this.walkFrame++;
+				else
+					this.walkFrame = walkFrame0;
+				
+				
 			}
 		}
 	}
