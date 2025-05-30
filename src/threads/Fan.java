@@ -4,6 +4,7 @@ import controllers.CinemaController;
 import java.util.concurrent.Semaphore;
 import utils.Fila;
 import views.FanView;
+import views.PizzaView;
 
 public class Fan extends Thread {
 
@@ -35,9 +36,11 @@ public class Fan extends Thread {
 		setDaemon(true);
 	}
 
-	public void eat() {
-
+	public void eat(double x, double y) {
+		PizzaView pizza = cinema.createPizzaView(x, y, eatTime);
+		pizza.pizzaAnimation(eatTime);
 	}
+	
 	public void escolherPoltronaCinema() {
 		try {
 			poltronasSemaphore.acquire();
@@ -226,7 +229,7 @@ public class Fan extends Thread {
 				cinema.addConsoleText("Fan " + id + " entrou na praca de alimentacao");
 				if(cinema.getCadeirasPraca().positionPerson(id) != -1){
 					fan.goToRefectoryChairAnimation(cinema.getCadeirasPraca().getPerson(id)[0], cinema.getCadeirasPraca().getPerson(id)[1], cinema.getCadeirasPraca().getPerson(id)[2]==1 , true);
-					Thread.sleep(1000 * eatTime);
+					eat(fan.getX(), fan.getY());
 					sairCadeiraPraca();
 					fan.goFromRefectoryToExitAnimation(true);
 				}else {
