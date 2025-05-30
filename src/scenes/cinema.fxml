@@ -42,6 +42,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="144.0" prefWidth="0.0">
                                  <children>
+                                    <Label fx:id="labelCapacity" layoutX="50.0" layoutY="82.0" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
                                     <Label fx:id="labelFilmTime" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
                                     <Label fx:id="labelDemonstratorStatus" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
                                  </children>

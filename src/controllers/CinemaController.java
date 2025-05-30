@@ -34,6 +34,8 @@ public class CinemaController {
 	@FXML
 	private Pane cinemaScreen;
 	@FXML
+	private Label labelCapacity;
+	@FXML
 	private Label labelFilmTime;
 	@FXML
 	private Label labelDemonstratorStatus;
@@ -287,11 +289,13 @@ public class CinemaController {
 	}
 	
 	public void setDemonstratorLabels(String filmTime, String status) {
+		this.labelCapacity.setText("Capacidade: " + capacity + " fãs");
 		this.labelFilmTime.setText("Tempo de Exibição: " + filmTime + "s");
 		this.labelDemonstratorStatus.setText("Status: " + status);
 	}
 	
 	public void clearDemonstratorLabels() {
+		this.labelCapacity.setText("");
 		this.labelFilmTime.setText("");
 		this.labelDemonstratorStatus.setText("");
 	}
