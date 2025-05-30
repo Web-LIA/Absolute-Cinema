@@ -90,8 +90,8 @@ public class CinemaController {
 	}
 	private void initPoltronasCinema() {
 		this.poltronasCinema = new Fila(this.capacity);
-		double []poltronasY = {271,300,328,355,382,412};
-		double []poltronasX = {244,273,300,327,356,384,412,439,468,498,525,554,583};
+		double []poltronasY = {272,301,329,356,383,413};
+		double []poltronasX = {245,274,301,328,357,385,413,440,469,499,526,555,584};
 		int count = 0;
 
 		for(int i = 0; i< poltronasY.length;i++){

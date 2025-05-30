@@ -40,7 +40,12 @@ public class Fan extends Thread {
 		PizzaView pizza = cinema.createPizzaView(x, y, eatTime);
 		pizza.pizzaAnimation(eatTime);
 	}
-	
+	public void eatVoid(){
+		long init = System.nanoTime();
+		while (init + eatTime * 1_000_000_000L > System.nanoTime()) {
+			int i = 1 + 1;
+		}
+	}
 	public void escolherPoltronaCinema() {
 		try {
 			poltronasSemaphore.acquire();
@@ -190,7 +195,7 @@ public class Fan extends Thread {
 		while (true) {
 			try {
 				fan.invisible();
-				fan.moveTo(680, 60);
+				fan.moveTo( 679, 60);
 				cinema.addConsoleText("Fan " + id + " entrou na fila");
 				while(true){
 					
@@ -230,7 +235,7 @@ public class Fan extends Thread {
 				fan.goToRefectoryAnimation(true);
 				saida.release();
 				escolherCadeiraPraca();
-				cinema.setLabelVoidQueue(cinema.getVoidPraca().size());
+				cinema.setLabelVoidRefectory(cinema.getVoidPraca().size());
 				cinema.addConsoleText("Fan " + id + " entrou na praca de alimentacao");
 				if(cinema.getCadeirasPraca().positionPerson(id) != -1){
 					fan.goToRefectoryChairAnimation(cinema.getCadeirasPraca().getPerson(id)[0], cinema.getCadeirasPraca().getPerson(id)[1], cinema.getCadeirasPraca().getPerson(id)[2]==1 , true);
@@ -240,8 +245,9 @@ public class Fan extends Thread {
 				}else {
 					fan.goOutToEatAnimation(true);
 					cinema.setLabelVoidRefectory(cinema.getVoidPraca().size());
-					Thread.sleep(1000 * eatTime);
+					eatVoid();
 					cinema.removeVoidPraca(id);
+					cinema.setLabelVoidRefectory(cinema.getVoidPraca().size());
 					fan.goFromOutToExitAnimation(true);
 				}
 				
