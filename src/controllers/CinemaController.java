@@ -43,7 +43,11 @@ public class CinemaController {
 	private Label labelEatTimeThread;
 	@FXML
 	private Label labelStatusThread;
-
+	@FXML
+	private Label labelVoidQueue;
+	@FXML
+	private Label labelVoidRefectory;
+	
 	@FXML
 	private TextArea consoleText;
 
@@ -298,6 +302,22 @@ public class CinemaController {
 	public void clearDemonstratorLabels() {
 		this.labelFilmTime.setText("");
 		this.labelDemonstratorStatus.setText("");
+	}
+	
+	public void setLabelVoidQueue(String quantity) {
+		this.labelVoidQueue.setText(quantity);
+	}
+	
+	public void clearLabelVoidQueue() {
+		this.labelVoidQueue.setText("");
+	}
+	
+	public void setLabelVoidRefectory(String quantity) {
+		this.labelVoidRefectory.setText(quantity);
+	}
+	
+	public void clearLabelVoidRefectory() {
+		this.labelVoidQueue.setText("");
 	}
 
 	public synchronized FanView createFanView(int id, int eatTime, Fan fanThread) {
