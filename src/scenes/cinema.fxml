@@ -96,12 +96,12 @@
             </GridPane>
          </center>
       </BorderPane>
-      <Label fx:id="labelVoidQueue" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="85.0" prefHeight="21.0" prefWidth="43.0" textFill="#e11212">
+      <Label fx:id="labelVoidQueue" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="85.0" prefHeight="21.0" prefWidth="43.0" textFill="#e11212" styleClass = "voidLabel">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelVoidRefectory" alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="454.0" prefHeight="21.0" prefWidth="43.0" textFill="#e11212">
+      <Label fx:id="labelVoidRefectory" alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="454.0" prefHeight="21.0" prefWidth="43.0" textFill="#e11212" styleClass = "voidLabel">
          <font>
             <Font size="18.0" />
          </font>
