@@ -56,6 +56,11 @@
     -fx-padding: 0  50px ;
     
 }
+.voidLabel{
+    -fx-text-fill: #FFF;
+    -fx-font-family: 'Jolly Lodger';
+    -fx-font-size: 32px;
+}
 /* Console ajustável */
 .console {
     -fx-pref-width: 100%;

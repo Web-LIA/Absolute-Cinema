@@ -276,7 +276,7 @@ public class CinemaController {
 	
 	public void setSelectedFanLabels(String id, String eatTime, String status) {
 		this.labelIdThread.setText("Id: " + id);
-		this.labelEatTimeThread.setText("Tempo de lanche: " + eatTime);
+		this.labelEatTimeThread.setText("Tempo de lanche: " + eatTime + "s");
 		this.labelStatusThread.setText("Status: " + status);
 	}
 	
@@ -296,20 +296,28 @@ public class CinemaController {
 		this.labelDemonstratorStatus.setText("");
 	}
 	
-	public void setLabelVoidQueue(String quantity) {
-		this.labelVoidQueue.setText(quantity);
+	public void setLabelVoidQueue(int quantity) {
+		String text = quantity > 0 ? quantity + "" : "";
+		Platform.runLater(() -> {
+			this.labelVoidQueue.setText(text);
+		});
+		
+		
 	}
 	
 	public void clearLabelVoidQueue() {
 		this.labelVoidQueue.setText("");
 	}
 	
-	public void setLabelVoidRefectory(String quantity) {
-		this.labelVoidRefectory.setText(quantity);
+	public void setLabelVoidRefectory(int quantity) {
+		String text = quantity > 0 ? quantity + "" : "";
+		Platform.runLater(() -> {
+			this.labelVoidRefectory.setText(text);
+		});
 	}
 	
 	public void clearLabelVoidRefectory() {
-		this.labelVoidQueue.setText("");
+		this.labelVoidRefectory.setText("");
 	}
 
 	public synchronized FanView createFanView(int id, int eatTime, Fan fanThread) {

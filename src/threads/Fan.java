@@ -153,6 +153,9 @@ public class Fan extends Thread {
 			if(posicao < 0 ) {
 				return;
 			}
+			if(cinema.getVoidCinema().contains(id) && cinema.getVoidCinema().get(0)!= id){
+				return;
+			}
 			cinema.removeVoidCinema(id);
 			poltronas.addPerson(posicao,id);
 			//Thread.sleep(100); // 
@@ -189,6 +192,7 @@ public class Fan extends Thread {
 				while(true){
 					
 					escolherFilaCinema();
+					cinema.setLabelVoidQueue(cinema.getVoidCinema().size());
 					if(cinema.getFilaCinema().positionPerson(id) != -1){
 						fan.show();
 						fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
@@ -223,6 +227,7 @@ public class Fan extends Thread {
 				fan.goToRefectoryAnimation(true);
 				saida.release();
 				escolherCadeiraPraca();
+				cinema.setLabelVoidQueue(cinema.getVoidPraca().size());
 				cinema.addConsoleText("Fan " + id + " entrou na praca de alimentacao");
 				if(cinema.getCadeirasPraca().positionPerson(id) != -1){
 					fan.goToRefectoryChairAnimation(cinema.getCadeirasPraca().getPerson(id)[0], cinema.getCadeirasPraca().getPerson(id)[1], cinema.getCadeirasPraca().getPerson(id)[2]==1 , true);
@@ -231,6 +236,7 @@ public class Fan extends Thread {
 					fan.goFromRefectoryToExitAnimation(true);
 				}else {
 					fan.goOutToEatAnimation(true);
+					cinema.setLabelVoidRefectory(cinema.getVoidPraca().size());
 					Thread.sleep(1000 * eatTime);
 					cinema.removeVoidPraca(id);
 					fan.goFromOutToExitAnimation(true);
