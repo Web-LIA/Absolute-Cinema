@@ -1,6 +1,7 @@
 package controllers;
 
 import views.FanView;
+import views.PizzaView;
 import threads.Demonstrator;
 import threads.Fan;
 
@@ -338,6 +339,11 @@ public class CinemaController {
 		//fan.moveTo(stage.getScene().getWidth()/2,  stage.getScene().getHeight()/2);
 		fanViews.add(fan);
 		return fan;
+	}
+	
+	public synchronized PizzaView createPizzaView(double x, double y, int eatTime) {
+		PizzaView pizza = new PizzaView(x, y, (Pane) stage.getScene().getRoot());
+		return pizza;
 	}
 
 }

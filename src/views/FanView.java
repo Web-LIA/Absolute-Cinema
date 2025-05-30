@@ -298,6 +298,14 @@ public class FanView {
 		return id;
 	}
 	
+	public double getX() {
+		return this.x;
+	}
+	
+	public double getY() {
+		return this.y;
+	}
+	
 	public ImageView getImageView () {
 		return this.imageView;
 	}
