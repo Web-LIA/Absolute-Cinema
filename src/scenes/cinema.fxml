@@ -40,6 +40,12 @@
                      <children>
                         <VBox alignment="BOTTOM_CENTER">
                            <children>
+                              <VBox alignment="CENTER" prefHeight="144.0" prefWidth="0.0">
+                                 <children>
+                                    <Label fx:id="labelFilmTime" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
+                                    <Label fx:id="labelDemonstratorStatus" textAlignment="CENTER" textFill="#e11212" wrapText="true" />
+                                 </children>
+                              </VBox>
                               
                               <Pane onMouseClicked="#openNewFanWindow" prefHeight="80.0" prefWidth="80.0" styleClass="addFanButton" VBox.vgrow="NEVER" />
                               <VBox alignment="CENTER" prefHeight="172.0" prefWidth="67.0">
