@@ -278,7 +278,11 @@ public class FanView {
 	}
 
 	public void switchFrame(int newFrameId) {
-		this.imageView.setImage(fanFrames.get(newFrameId - 1));
+		Platform.runLater(() -> {
+			if (newFrameId >= 1 && newFrameId <= fanFrames.size()) {
+				this.imageView.setImage(fanFrames.get(newFrameId - 1));
+			}
+		});
 	}
 
 	public void moveTo(double newX, double newY) {

@@ -61,7 +61,7 @@ public class InitController {
 			CinemaController cinemaController = loader.getController();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
-			stage.setResizable(true);
+			stage.setResizable(false);
 			stage.setScene(scene);
 			cinemaController.getInitialValues(capacity, filmTime, stage);
 			stage.show();

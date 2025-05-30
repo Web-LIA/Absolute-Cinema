@@ -142,7 +142,7 @@ public class CinemaController {
 	}
 	public void addConsoleText(String text) {
 		Platform.runLater(() -> {
-			this.consoleText.setText(consoleText.getText() + text + "\n");
+			this.consoleText.setText( text + "\n" + consoleText.getText());
 		});
 		
 		

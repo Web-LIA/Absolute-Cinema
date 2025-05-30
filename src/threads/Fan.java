@@ -188,6 +188,7 @@ public class Fan extends Thread {
 			try {
 				fan.invisible();
 				fan.moveTo(680, 60);
+				cinema.addConsoleText("Fan " + id + " entrou na fila");
 				while(true){
 					
 					escolherFilaCinema();
@@ -196,7 +197,7 @@ public class Fan extends Thread {
 						fan.entryQueueAnimation(cinema.getFilaCinema().getPerson(id)[0], cinema.getFilaCinema().getPerson(id)[1]);
 					}
 					if(cinema.getFilaCinema().positionPerson(id) == 0)break;
-					cinema.addConsoleText("Fan" + id + " esperando na fila");
+					
 					filaAndou.acquire();
 				}
 				
@@ -207,7 +208,7 @@ public class Fan extends Thread {
 				filaAndou.release(cinema.getFilaCinema().getTamanho() + cinema.getVoidCinema().size());
 				
 				escolherPoltronaCinema();
-				cinema.addConsoleText("Fan" + id + "entrou no cinema");
+				cinema.addConsoleText("Fan " + id + " entrou no cinema");
 				fan.goToCinemaChairAnimation( cinema.getPoltronasCinema().getPerson(id)[0], cinema.getPoltronasCinema().getPerson(id)[1], true);
 				
 				// Animção Fã entrando no cinema

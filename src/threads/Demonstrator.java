@@ -48,16 +48,21 @@ public class Demonstrator extends Thread {
 					break;
 				}
 
-				// tirar depois
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e) {
-					return;
-				}
+				
 			}
 				
 			
 		}
+	}
+	
+	public void waitingFilm(){
+		cinema.setCinemaScreen("-fx-background-color: #4C4343;");
+	}
+	public void endFilm(){
+		cinema.setCinemaScreen(" -fx-background-image: url(\'./assets/film_frames/theEnd.jpg\'); ");
+	}
+	public void capaFilm(){
+		cinema.setCinemaScreen( "-fx-background-image: url(\'./assets/film_frames/capa.jpg\'); ");
 	}
 	
 	public void run() {
@@ -68,6 +73,7 @@ public class Demonstrator extends Thread {
                 // Libera vagas para os fãs entrarem
                 entrada.release(capacidade);
 
+				waitingFilm();
                 // BLOQUEIA até todos entrarem
                 cheios.acquire(capacidade);
 
@@ -76,9 +82,11 @@ public class Demonstrator extends Thread {
                 inicioFilme.release(capacidade);
 				cinema.addConsoleText("Demonstrador iniciou o filme");
                 // Exibe o filme
+				capaFilm();
                 showFilm();
 				cinema.addConsoleText("Demonstrador encerrou o filme");
 				cinema.setIsFilmRunning(false);
+				endFilm();
                 // Libera fim do filme para todos
                 saida.acquire(capacidade);
 
