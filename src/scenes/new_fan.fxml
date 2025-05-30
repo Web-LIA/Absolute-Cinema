@@ -7,17 +7,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500" styleClass="layout" stylesheets="@../themes/newFan.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewFanController">
+<AnchorPane prefHeight="500.0" prefWidth="500" styleClass="layout" stylesheets="@../themes/newFan.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewFanController">
    <children>
       <Label layoutX="15.0" layoutY="14.0" prefHeight="88.0" prefWidth="471.0" styleClass="titulo" text="Adicione seu Chaves" />
       <Label contentDisplay="CENTER" layoutX="-99.0" layoutY="128.0" prefHeight="45.0" prefWidth="726.0" styleClass="inputLabel" text="Quanto tempo ele passa comendo?   " textAlignment="CENTER" />
-      <TextField fx:id="inputEatTime" layoutX="164.0" layoutY="188.0" prefHeight="30.0" prefWidth="200.0" styleClass="inputField" promptText="Em segundos" alignment="CENTER"/>
-      <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#addFan" prefHeight="71.0" prefWidth="250.0" styleClass="addButton" >
+      <TextField fx:id="inputEatTime" alignment="CENTER" layoutX="164.0" layoutY="188.0" prefHeight="30.0" prefWidth="200.0" promptText="Em segundos" styleClass="inputField" />
+      <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#addFan" prefHeight="71.0" prefWidth="250.0" styleClass="addButton">
          <graphic>
       				<Label alignment="CENTER" layoutX="36.0" layoutY="277.0" prefHeight="47.0" prefWidth="257.0" styleClass="buttonText" text="Adicionar" textAlignment="CENTER" />
 			</graphic>
        </Button>  
-      <Button layoutX="39.0" layoutY="365.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="250.0" styleClass="cancelButton">
+      <Button layoutX="39.0" layoutY="365.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="71.0" prefWidth="250.0" styleClass="cancelButton">
          <graphic>
       				<Label styleClass="buttonText" text="Cancelar" textAlignment="CENTER" />
 			</graphic>
