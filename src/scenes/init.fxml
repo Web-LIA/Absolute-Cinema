@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="layout" stylesheets="@../themes/init.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InitController">
+	<children>
+		
+		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="-79.0" prefHeight="232.0" prefWidth="500.0" styleClass="titulo" text="ABSOLUTE CINEMA" textAlignment="CENTER" textFill="WHITE" />
+		
+		<Label alignment="CENTER" layoutX="31.0" layoutY="80.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Limite do cinema:" />         
+		<Label layoutX="31.0" layoutY="135.0" prefHeight="35.0" prefWidth="200.0" styleClass="inputLabel" text="Duração do filme:" textAlignment="CENTER" />
+		<TextField fx:id="inputFilmTime" layoutX="235.0" layoutY="140.0" prefHeight="25.0" prefWidth="235.0" promptText="Em segundos" styleClass="inputField" alignment="CENTER" />
+		<TextField fx:id="inputCapacity" layoutX="235.0" layoutY="84.0" prefHeight="25.0" prefWidth="235.0" promptText="Máximo 66" styleClass="inputField" alignment="CENTER" />
+      	<Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="175.0" prefHeight="35.0" prefWidth="461.0" styleClass="errorLabel" textFill="WHITE" />
+		<Button layoutX="66.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchToCinemaScene" prefHeight="19.0" prefWidth="368.0" styleClass="button">
+			<graphic>
+      				<Label styleClass="buttonText" text="Iniciar cinema" />
+			</graphic>
+		</Button>
+	  	<ImageView fx:id="chavesImg" fitHeight="200.0" fitWidth="400.0" layoutX="50.0" layoutY="289.0" preserveRatio="false" styleClass="image">
+			<image>
+				<Image url="@../assets/absoluteLaion.jpeg" />
+			</image>
+		</ImageView>
+	</children>
+</AnchorPane>
