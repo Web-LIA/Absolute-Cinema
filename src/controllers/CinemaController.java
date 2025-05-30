@@ -34,6 +34,10 @@ public class CinemaController {
 	@FXML
 	private Pane cinemaScreen;
 	@FXML
+	private Label labelFilmTime;
+	@FXML
+	private Label labelDemonstratorStatus;
+	@FXML
 	private Label labelIdThread;
 	@FXML
 	private Label labelEatTimeThread;
@@ -134,7 +138,15 @@ public class CinemaController {
 		initPoltronasCinema();
 		initCadeirasPraca();
 		initFilaCinema();
-		new Demonstrator(this.filmTime, this).start();
+		Demonstrator demonstrator = new Demonstrator(this.filmTime, this);
+		demonstrator.start();
+		this.cinemaScreen.setOnMouseEntered(e -> {
+			demonstrator.getState();
+			this.setDemonstratorLabels(filmTime + "", demonstrator.getState().toString());
+		});
+		this.cinemaScreen.setOnMouseExited(e ->{
+			this.clearDemonstratorLabels();
+		});
 	}
 
 	public void setCinemaScreen(String style) {
@@ -276,6 +288,16 @@ public class CinemaController {
 		this.labelIdThread.setText("");
 		this.labelEatTimeThread.setText("");
 		this.labelStatusThread.setText("");
+	}
+	
+	public void setDemonstratorLabels(String filmTime, String status) {
+		this.labelFilmTime.setText("Tempo de Exibição: " + filmTime + "s");
+		this.labelDemonstratorStatus.setText("Status: " + status);
+	}
+	
+	public void clearDemonstratorLabels() {
+		this.labelFilmTime.setText("");
+		this.labelDemonstratorStatus.setText("");
 	}
 
 	public synchronized FanView createFanView(int id, int eatTime, Fan fanThread) {
