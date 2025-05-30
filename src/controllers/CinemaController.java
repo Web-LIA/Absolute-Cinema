@@ -49,11 +49,9 @@ public class CinemaController {
 
 	private int capacity;
 	private int filmTime;
-	private Semaphore S;
 	private Semaphore cadeiras = new Semaphore(1, true); // para controlar as escolhas das 
 	private Semaphore poltronas = new Semaphore(1, true); // para controlar as poltronas do cinema
 	private Semaphore filaForaCinema = new Semaphore(1,true);// controlar fila de fora do cinema
-	private Semaphore filaCapacidade = new Semaphore (1,true);
 	private Semaphore filaAndou = new Semaphore(0,true);
 	//private Semaphore consoleSemaphore = new Semaphore(1,true);
 
@@ -193,12 +191,6 @@ public class CinemaController {
 	}
 	public Semaphore getFilaAndou(){
 		return  this.filaAndou;
-	}
-	public Semaphore getSemaphore() {
-		return this.S;
-	}
-	public Semaphore getFilaCapacidade(){
-		return this.filaCapacidade;
 	}
 	public Semaphore getEntrada(){
 		return this.entrada;

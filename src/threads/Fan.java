@@ -9,12 +9,11 @@ public class Fan extends Thread {
 
 	private int id;
 	private int eatTime;
-	private Semaphore S;
+
 	private CinemaController cinema;
 	private Semaphore cadeirasSemaphore;
 	private Semaphore poltronasSemaphore;
 	private Semaphore filaForaCinema;
-	private Semaphore filaCapacidade;
 	private Semaphore filaAndou;
 	private Semaphore entrada ;
 	private Semaphore inicioFilme ;
@@ -23,7 +22,6 @@ public class Fan extends Thread {
 
 	public Fan(int eatTime, CinemaController cinemaController) {
 		this.id = cinemaController.getFanId();
-		this.S = cinemaController.getSemaphore();
 		this.eatTime = eatTime;
 		this.cinema = cinemaController;
 		this.cadeirasSemaphore = cinemaController.getCadeiras();
@@ -33,7 +31,6 @@ public class Fan extends Thread {
 		this.inicioFilme = cinemaController.getInicioFilme();
 		this.cheios = cinemaController.getCheios();
 		this.saida = cinemaController.getSaida();
-		this.filaCapacidade = cinemaController.getFilaCapacidade();
 		this.filaAndou = cinemaController.getFilaAndou();
 		setDaemon(true);
 	}

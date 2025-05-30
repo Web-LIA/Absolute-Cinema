@@ -11,7 +11,6 @@ public class Demonstrator extends Thread {
 	private long frameDuration;
 	private int capacidade;
 
-	private Semaphore S;
 	private CinemaController cinema;
 	private final List<String> filmFrames = new ArrayList<>();
 
@@ -24,7 +23,6 @@ public class Demonstrator extends Thread {
 		this.filmTime = filmTime;
 		this.frameDuration = (this.filmTime * 1_000_000_000L) / 10;
 		this.capacidade = cinemaController.getPoltronasCinema().getTamanho();
-		// this.S = S;
 		for (int i = 1; i <= 10; i++) {
 			filmFrames.add("-fx-background-image: url(\'./assets/film_frames/film_frame_" + i + ".jpg');");
 		}

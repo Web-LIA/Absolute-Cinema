@@ -11,7 +11,7 @@
    <children>
       <Label layoutX="15.0" layoutY="14.0" prefHeight="88.0" prefWidth="471.0" styleClass="titulo" text="Adicione seu Chaves" />
       <Label contentDisplay="CENTER" layoutX="-99.0" layoutY="128.0" prefHeight="45.0" prefWidth="726.0" styleClass="inputLabel" text="Quanto tempo ele passa comendo?   " textAlignment="CENTER" />
-      <TextField fx:id="inputEatTime" layoutX="164.0" layoutY="188.0" prefHeight="30.0" prefWidth="200.0" styleClass="inputField" promptText="Em segundos"/>
+      <TextField fx:id="inputEatTime" layoutX="164.0" layoutY="188.0" prefHeight="30.0" prefWidth="200.0" styleClass="inputField" promptText="Em segundos" alignment="CENTER"/>
       <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#addFan" prefHeight="71.0" prefWidth="250.0" styleClass="addButton" >
          <graphic>
       				<Label alignment="CENTER" layoutX="36.0" layoutY="277.0" prefHeight="47.0" prefWidth="257.0" styleClass="buttonText" text="Adicionar" textAlignment="CENTER" />

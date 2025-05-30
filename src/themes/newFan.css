@@ -34,8 +34,7 @@
     -fx-border-color: #000;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-padding: 3px;
-    -fx-text-alignment: center;
+    -fx-padding: 3px; 
 }   
 .image{
     -fx-border-radius: 100px;
@@ -61,6 +60,7 @@
     -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-cursor: hand;
 }
 .cancelButton{
     -fx-background-color: #B13335;
