@@ -1,74 +1,80 @@
 # 🎬 Absolute Cinema
 
-**Absolute Cinema** is a Java-based application that simulates a cinema management system. It was developed as part of an academic project and demonstrates core Java concepts, including multithreading and graphical user interfaces (GUI).
+**Absolute Cinema** é uma aplicação Java desenvolvida com JavaFX que simula a exibição de um filme em um auditório. O projeto foi desenvolvido como parte da disciplina de Sistemas Operacionais (2025.2) do curso de Engenharia de Computação IFCE, utilizando conceitos de threads, semáforos e interface gráfica.
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/Java-21.0.7-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![JavaFX](https://img.shields.io/badge/JavaFX-21.0.7-informational?style=for-the-badge)
+![Scene Builder](https://img.shields.io/badge/SceneBuilder-GUI-blue?style=for-the-badge)
 ![Eclipse IDE](https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white)
-![Swing](https://img.shields.io/badge/Swing-GUI-informational?style=for-the-badge)
-
----
-![Absolute Cinema](https://i.imgflip.com/9iis6k.jpg)
-
-## 🧠 Features
-
-- ✅ **Multithreaded operations** to simulate real-time cinema behavior  
-- ✅ **Graphical User Interface (GUI)** using Java Swing  
-- ✅ **OOP (Object-Oriented Programming)** design principles  
-- ✅ **Interactive cinema simulation**, including seats, timing, and events  
 
 ---
 
-## 💻 Technologies Used
+![Absolute Cinema](https://github.com/Web-LIA/Absolute-Cinema/blob/main/src/assets/readme_assets/cinema_rodando.png)
+![Absolute Cinema](https://github.com/Web-LIA/Absolute-Cinema/blob/main/src/assets/readme_assets/init.png)
+![Absolute Cinema](https://github.com/Web-LIA/Absolute-Cinema/blob/main/src/assets/readme_assets/novo_chaves.png)
+![Absolute Cinema](https://github.com/Web-LIA/Absolute-Cinema/blob/main/src/assets/readme_assets/cinema.png)
 
-- **Java SE**
-- **Java Swing**
+## 📚 Descrição do Problema
+
+O projeto é baseado em um problema de sincronização proposto na disciplina de Sistemas Operacionais.
+
+📄 [Clique aqui para visualizar o enunciado completo (PDF)](https://github.com/Web-LIA/Absolute-Cinema/blob/main/src/assets/readme_assets/SO%20-%20PROJETO%20I%20-%202025_1.pdf)
+
+---
+
+## 🧠 Funcionalidades
+
+- 🎞️ Simulação de exibição de filme com controle de acesso ao auditório  
+- 🧵 Utilização de threads para representar o demonstrador e os fãs  
+- 🔄 Sincronização com semáforos  
+- 🖥️ Interface gráfica interativa desenvolvida com JavaFX  
+- 📜 Log em tempo real dos eventos das threads
+
+---
+
+## 💻 Tecnologias Utilizadas
+
+- **Java 21.0.7**
+- **JavaFX 21.0.7**
+- **Scene Builder** 🛠️
 - **Eclipse IDE**
 
 ---
 
-## 📂 Project Structure
+## 📂 Estrutura do Projeto
 
 ```
 absolute-cinema/
-
+├── src/
+│   ├── application/         # Arquivos principais de inicialização
+│   ├── assets/              # Imagens gerais da aplicação
+│   ├── controllers/         # Classes controladoras dos fxml
+│   ├── fonts/               # Tipografias importadas
+│   ├── scenes/              # Arquivos fxml que moldam as janelas
+│   ├── themes/              # Estilização (Css) das scenes
+│   ├── threads/             # Classes das Threads
+│   ├── utils/               # Utilitários
+│   └── views/               # Classes para elementos visuais dinâmicos
+└── README.md
 ```
+---
+
+## 🚀 Como Executar
+
+O procedimento completo de instalação e execução está disponível na seguinte tag do repositório:
+
+🔗 [Release 1.0](https://github.com/Web-LIA/Absolute-Cinema/releases/tag/1.0)
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- [Java JDK 8+](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
-- [Eclipse IDE](https://www.eclipse.org/downloads/)
-
-### Run the Project
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Web-Lia/absolute-cinema.git
-   ```
-2. Open Eclipse and import the project:
-   - **File > Import > Existing Projects into Workspace**
-3. Build and run the project:
-   - Right-click on the main class → **Run As > Java Application**
-
----
-
-## 📌 Notes
-
-- The project uses **Swing** for the GUI and **threads** to simulate background tasks.
-- All configuration is done via Java code — no external dependencies or build tools required (like Maven or Gradle).
-
----
-
-## 🤝 Contributors
+## 👥 Contribuidores
 
 - [RyanRodrics](https://github.com/RyanRodrics)  
 - [ari123rm](https://github.com/ari123rm)  
 - [Andrededede](https://github.com/Andrededede)  
 
-
 ---
 
-## 📃 License
+## 📄 Licença
 
-This project is for educational purposes and has no specific license applied.
+Projeto desenvolvido para fins educacionais. Nenhuma licença específica foi aplicada.
