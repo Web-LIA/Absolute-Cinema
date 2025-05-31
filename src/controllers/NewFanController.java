@@ -38,5 +38,11 @@ public class NewFanController {
 			inputEatTime.setText("");
 		}
 	}
+	
+	@FXML
+	private void closeWindow() {
+		Stage stage = (Stage) inputEatTime.getScene().getWindow();
+		stage.close();
+	}
 
 }
