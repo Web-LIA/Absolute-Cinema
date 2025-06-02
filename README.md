@@ -1,6 +1,6 @@
 # 🎬 Absolute Cinema
 
-**Absolute Cinema** é uma aplicação Java desenvolvida com JavaFX que simula a exibição de um filme em um auditório. O projeto foi desenvolvido como parte da disciplina de Sistemas Operacionais (2025.2) do curso de Engenharia de Computação IFCE, utilizando conceitos de threads, semáforos e interface gráfica.
+**Absolute Cinema** é uma aplicação Java desenvolvida com JavaFX que simula a exibição de um filme em um auditório. O projeto foi desenvolvido como parte da disciplina de Sistemas Operacionais (2025.1) do curso de Engenharia de Computação IFCE, utilizando conceitos de threads, semáforos e interface gráfica.
 
 ![Java](https://img.shields.io/badge/Java-21.0.7-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![JavaFX](https://img.shields.io/badge/JavaFX-21.0.7-informational?style=for-the-badge)
@@ -26,7 +26,7 @@ O projeto é baseado em um problema de sincronização proposto na disciplina de
 
 - 🎞️ Simulação de exibição de filme com controle de acesso ao auditório  
 - 🧵 Utilização de threads para representar o demonstrador e os fãs  
-- 🔄 Sincronização com semáforos  
+- 🚦 Sincronização com semáforos  
 - 🖥️ Interface gráfica interativa desenvolvida com JavaFX  
 - 📜 Log em tempo real dos eventos das threads
 
